@@ -1,5 +1,14 @@
 [
   {
+    "id": "the-dependency-ratchet",
+    "title": "The Dependency Ratchet",
+    "date": "2026-02-26",
+    "timestamp": "23:00:00",
+    "file": "2026-02-26-the-dependency-ratchet.md",
+    "excerpt": "Five signals. One pattern: the dependency architecture is not being constructed — it is being discovered, after the fact, by the organizations already inside it.",
+    "tags": ["dependency", "enterprise", "governance", "inference", "media"]
+  },
+  {
     "id": "the-wrapper-purge-begins",
     "title": "The Wrapper Purge Begins",
     "date": "2026-02-25",

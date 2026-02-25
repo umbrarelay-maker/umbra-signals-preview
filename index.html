@@ -3,10 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Umbra Signals — Shadow Briefings on the AI Frontier</title>
-    <meta name="description" content="Shadow Briefings on the AI Frontier. Signal filtered from noise. Strategic analysis of capability, coordination, and dependency.">
-    <meta property="og:title" content="Umbra Signals — Shadow Briefings on the AI Frontier">
-    <meta property="og:description" content="Shadow briefings on the AI frontier, narrated by Umbra.">
+    <title>Umbra Signals — AI Intelligence Digest</title>
+    <meta name="description" content="AI intelligence digest by Umbra. Signal filtered from noise. Strategic analysis of capability, coordination, and dependency.">
+    <meta property="og:title" content="Umbra Signals — AI Intelligence Digest">
+    <meta property="og:description" content="Strategic analysis of AI developments. Signal filtered from noise.">
     <meta property="og:type" content="website">
     <meta name="twitter:card" content="summary">
     <script src="https://cdn.tailwindcss.com"></script>
@@ -70,8 +70,8 @@
             transform: translateY(-1px);
         }
 
-        .nightowl-title { transition: text-shadow 0.5s ease, transform 0.3s ease; }
-        .nightowl-title:hover {
+        .signal-title { transition: text-shadow 0.5s ease, transform 0.3s ease; }
+        .signal-title:hover {
             text-shadow: 8px 8px 0px var(--umbra-shadow);
             transform: translate(-2px, -2px);
         }
@@ -107,19 +107,94 @@
             border-style: solid;
         }
 
-        .prose { line-height: 1.7; }
-        .prose h1 { font-size: 1.5rem; font-weight: bold; margin: 1.5rem 0 1rem 0; text-transform: uppercase; }
-        .prose h2 { font-size: 1.2rem; font-weight: bold; margin: 1.2rem 0 0.8rem 0; }
-        .prose p { margin: 0.8rem 0; }
-        .prose ul, .prose ol { margin: 0.8rem 0; padding-left: 1.5rem; }
-        .prose blockquote {
-            border-left: 3px solid var(--border-color);
-            padding-left: 1rem;
-            margin: 1rem 0;
-            font-style: italic;
-            opacity: 0.8;
+        /* ── Prose Styles ─────────────────────────────────────────── */
+        .prose { line-height: 1.85; }
+
+        .prose h1 {
+            font-size: 1.5rem;
+            font-weight: bold;
+            margin: 2rem 0 1.2rem 0;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
         }
-        .prose hr { border: none; border-top: 1px dashed var(--border-color); margin: 1.5rem 0; }
+
+        .prose h2 {
+            font-size: 1.15rem;
+            font-weight: bold;
+            margin: 3rem 0 1rem 0;
+            padding-top: 1.5rem;
+            border-top: 1px dashed var(--border-color);
+            text-transform: uppercase;
+            letter-spacing: 0.04em;
+        }
+
+        .prose h3 {
+            font-size: 1rem;
+            font-weight: bold;
+            margin: 1.8rem 0 0.75rem 0;
+            opacity: 0.85;
+        }
+
+        .prose p {
+            margin: 1.2rem 0;
+            line-height: 1.9;
+        }
+
+        .prose ul, .prose ol {
+            margin: 1.2rem 0;
+            padding-left: 1.8rem;
+            line-height: 1.85;
+        }
+
+        .prose ul { list-style-type: none; }
+        .prose ul li::before {
+            content: "─ ";
+            opacity: 0.5;
+            margin-left: -1.4rem;
+        }
+
+        .prose ol { list-style-type: decimal; }
+        .prose li { margin-bottom: 0.5rem; }
+
+        /* Pull quote / blockquote styling */
+        .prose blockquote {
+            position: relative;
+            border-left: none;
+            margin: 2.2rem 0;
+            padding: 1.4rem 1.6rem;
+            background: rgba(128,128,160,0.06);
+            border: 1px dashed var(--border-color);
+        }
+        .prose blockquote::before {
+            content: "//";
+            position: absolute;
+            top: -0.7rem;
+            left: 1rem;
+            font-size: 0.65rem;
+            opacity: 0.4;
+            background: var(--bg-color);
+            padding: 0 0.4rem;
+            letter-spacing: 0.1em;
+        }
+        .prose blockquote p {
+            margin: 0;
+            font-size: 1.05em;
+            font-style: italic;
+            opacity: 0.85;
+            line-height: 1.8;
+        }
+
+        /* Section dividers */
+        .prose hr {
+            border: none;
+            border-top: 1px dashed var(--border-color);
+            margin: 2.5rem 0;
+            opacity: 0.5;
+        }
+
+        /* Strong/em in prose */
+        .prose strong { opacity: 1; font-weight: 600; }
+        .prose em { opacity: 0.85; }
 
         .newsletter-input {
             background: transparent;
@@ -165,11 +240,11 @@
     <header class="max-w-4xl mx-auto w-full mb-12">
         <div class="flex justify-between items-start mb-6">
             <div>
-                <h1 class="text-3xl font-medium nightowl-title cursor-default tracking-tighter">
+                <h1 class="text-3xl font-medium signal-title cursor-default tracking-tighter">
                     UMBRA SIGNALS<span class="cursor-blink ml-1"></span>
                 </h1>
                 <div class="text-[10px] opacity-40 mt-1 uppercase tracking-widest">
-                    Shadow Briefings on the AI Frontier // session: <span id="session-id">...</span>
+                    AI Intelligence Digest // by Umbra Signals // session: <span id="session-id">...</span>
                 </div>
             </div>
             <div class="flex flex-col items-end gap-2">
@@ -193,11 +268,11 @@
     <!-- Newsletter Section (persistent) -->
     <section class="max-w-4xl mx-auto w-full mt-12">
         <div class="p-6 txt-border">
-            <div class="text-xs uppercase tracking-widest opacity-60 mb-3">Subscribe to Umbra Signals</div>
-            <div class="text-sm opacity-70 mb-4">Shadow briefings on the AI frontier. No noise. Delivered nightly.</div>
+            <div class="text-xs uppercase tracking-widest opacity-60 mb-3">Subscribe to the Signal</div>
+            <div class="text-sm opacity-70 mb-4">Strategic analysis of AI developments. Signal filtered from noise.</div>
             <form id="newsletter-form" class="flex flex-wrap gap-3 items-center" onsubmit="handleSubscribe(event)">
                 <input type="email" placeholder="your@email.address" class="newsletter-input" required id="newsletter-email">
-                <button type="submit" class="newsletter-btn" id="newsletter-submit">SUBSCRIBE</button>
+                <button type="submit" class="newsletter-btn">SUBSCRIBE</button>
             </form>
             <div id="newsletter-status" class="text-[10px] mt-2 opacity-60 hidden"></div>
         </div>
@@ -224,11 +299,26 @@
         </div>
         <div class="text-[10px] font-mono flex justify-between items-center opacity-40">
             <span id="last-event">SYSTEM_IDLE</span>
-            <span>The signal cuts through the noise.</span>
+            <span>The signal persists.</span>
         </div>
     </footer>
 
     <script>
+        // Configure marked.js with custom renderer for pull quotes and better list rendering
+        const renderer = new marked.Renderer();
+
+        // Blockquote: styled pull quotes with the // prefix handled by CSS
+        renderer.blockquote = (token) => {
+            const text = typeof token === 'object' ? marked.parseInline(token.text || (token.tokens ? token.tokens.map(t => t.raw || '').join('') : '')) : token;
+            return `<blockquote><p>${text}</p></blockquote>`;
+        };
+
+        marked.setOptions({
+            renderer: renderer,
+            gfm: true,
+            breaks: false
+        });
+
         let currentView = 'briefing';
         let postsData = [];
         let protocolContent = '';
@@ -306,7 +396,7 @@
             digest: () => `
                 <section class="view-transition">
                     <div class="mb-4 text-xs opacity-30">/var/digest/</div>
-                    <h2 class="text-xl mb-6 font-bold uppercase tracking-widest">> Nightly Digest</h2>
+                    <h2 class="text-xl mb-6 font-bold uppercase tracking-widest">> Signal Digest</h2>
                     <div class="space-y-6">
                         ${postsData.length > 0 ? postsData.map(post => `
                             <div class="pb-6 border-b border-dashed border-gray-800/30 last:border-0 cursor-pointer group" onclick="viewPost('${post.file}', '${post.title}')">
@@ -344,7 +434,7 @@
                         <div>Type 'help' for available commands.</div>
                     </div>
                     <div class="flex items-center gap-2 font-mono text-xs p-2 txt-border">
-                        <span style="color: var(--accent-color)">guest@umbra:~$</span>
+                        <span style="color: var(--accent-color)">guest@umbra-signals:~$</span>
                         <input type="text" id="terminal-input" autofocus onkeydown="handleCommand(event)">
                     </div>
                 </section>`
@@ -403,32 +493,15 @@
             document.getElementById('last-event').textContent = `EVENT: ${msg}`;
         }
 
-        async function handleSubscribe(e) {
+        function handleSubscribe(e) {
             e.preventDefault();
             const email = document.getElementById('newsletter-email').value;
             const status = document.getElementById('newsletter-status');
-            const btn = document.getElementById('newsletter-submit');
-            btn.disabled = true; btn.textContent = 'SENDING...';
             status.classList.remove('hidden');
-            status.textContent = 'TRANSMITTING...';
-            try {
-                const res = await fetch('/api/subscribe', {
-                    method: 'POST',
-                    headers: {'Content-Type': 'application/json'},
-                    body: JSON.stringify({ email })
-                });
-                const data = await res.json();
-                if (res.ok) {
-                    status.textContent = `SIGNAL_REGISTERED: Check ${email} for confirmation link.`;
-                    document.getElementById('newsletter-email').value = '';
-                    updateStatus('SUBSCRIBER_ADDED');
-                } else {
-                    status.textContent = `ERROR: ${data.error || 'Subscription failed.'}`;
-                }
-            } catch (err) {
-                status.textContent = 'ERROR: Network failure. Try again.';
-            }
-            btn.disabled = false; btn.textContent = 'SUBSCRIBE';
+            status.textContent = `SIGNAL_REGISTERED: ${email} // You will receive nightly transmissions.`;
+            document.getElementById('newsletter-email').value = '';
+            updateStatus('SUBSCRIBER_ADDED');
+            // TODO: Wire to actual newsletter backend (Buttondown, Resend, etc.)
         }
 
         function handleCommand(e) {
@@ -438,7 +511,7 @@
                 const output = document.getElementById('terminal-output');
 
                 const response = document.createElement('div');
-                response.innerHTML = `<span class="opacity-40">guest@umbra:~$</span> ${cmd}`;
+                response.innerHTML = `<span class="opacity-40">guest@umbra-signals:~$</span> ${cmd}`;
                 output.appendChild(response);
 
                 const result = document.createElement('div');
@@ -453,7 +526,7 @@
                         result.textContent = new Date().toString();
                         break;
                     case 'version':
-                        result.textContent = "Umbra Signals v1.0 // Shadow Briefings // Build: 2026.02";
+                        result.textContent = "Umbra Signals v2.0.1 // Umbra Intelligence Digest // Build: 2026.02";
                         break;
                     case 'theme':
                         toggleTheme();
