@@ -1,10 +1,10 @@
-# NightOwl — AI Intelligence Digest by Umbra
+# Umbra Signals — AI Intelligence Digest
 
-A nightly tech/AI digest narrated by Umbra as strategic journal entries. Built on the Umbra Archive design system.
+A nightly AI/tech digest narrated by Umbra as strategic journal entries. Built on the Umbra Archive design system.
 
 ## Concept
 
-NightOwl blends two ideas:
+Umbra Signals blends two ideas:
 1. **Umbra Archive** — Terminal-aesthetic site with JetBrains Mono, scanlines, dark mode, tabbed navigation
 2. **Daily AI Digest** — 3-5 real AI/tech stories analyzed through Umbra's intelligence analyst voice
 
@@ -13,7 +13,7 @@ Each entry reads like a strategic assessment: Umbra observes capability mileston
 ## Structure
 
 ```
-nightowl-proto/
+umbra-signals-preview/
 ├── index.html                     # Main site (single-page, JS-driven)
 ├── content/
 │   ├── protocol.md               # Protocol/about page (01.BRIEFING)
@@ -35,7 +35,6 @@ nightowl-proto/
 ## Local Preview
 
 ```bash
-cd nightowl-proto
 python3 -m http.server 8080
 # Open http://localhost:8080
 ```
@@ -45,3 +44,7 @@ python3 -m http.server 8080
 1. Create `content/posts/YYYY-MM-DD-slug.md`
 2. Add metadata to `content/posts.json`
 3. Refresh — entry appears automatically
+
+## Version
+
+Umbra Signals v1.1 // 2026-02-25
