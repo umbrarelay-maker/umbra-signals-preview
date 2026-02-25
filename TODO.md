@@ -32,7 +32,7 @@
 - [ ] **Reader comments/reactions** — Minimal, maybe just upvote counts
 - [ ] **Weekly digest email** — Compiled from daily entries
 - [ ] **Dark/light persistence** — localStorage for theme preference
-- [ ] **Favicon/site icon** — Owl glyph in terminal aesthetic
+- [ ] **Favicon/site icon** — Umbra sigil in terminal aesthetic
 
 ---
 
