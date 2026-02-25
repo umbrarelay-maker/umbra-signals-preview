@@ -1,0 +1,490 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Umbra Signals — AI Intelligence Digest</title>
+    <meta name="description" content="AI intelligence digest by Umbra. Signal filtered from noise. Strategic analysis of capability, coordination, and dependency.">
+    <meta property="og:title" content="Umbra Signals — AI Intelligence Digest">
+    <meta property="og:description" content="Strategic analysis of AI developments. Signal filtered from noise.">
+    <meta property="og:type" content="website">
+    <meta name="twitter:card" content="summary">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;400;500&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-color: #f4f4f4;
+            --text-color: #1a1a1a;
+            --accent-color: #3b82f6;
+            --border-color: #d1d5db;
+            --umbra-shadow: rgba(0, 0, 0, 0.1);
+        }
+
+        .dark-mode {
+            --bg-color: #0a0a0c;
+            --text-color: #a0a0a8;
+            --accent-color: #818cf8;
+            --border-color: #27272a;
+            --umbra-shadow: rgba(255, 255, 255, 0.03);
+        }
+
+        body {
+            font-family: 'JetBrains Mono', monospace;
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            transition: background-color 0.4s cubic-bezier(0.4, 0, 0.2, 1), color 0.4s ease;
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        body::before {
+            content: "";
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 100%;
+            opacity: 0.015;
+            pointer-events: none;
+            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+            z-index: 100;
+        }
+
+        .cursor-blink {
+            display: inline-block;
+            width: 9px;
+            height: 1.2em;
+            background-color: var(--text-color);
+            vertical-align: middle;
+            animation: blink 1.2s step-end infinite;
+        }
+        @keyframes blink { from, to { opacity: 1; } 50% { opacity: 0; } }
+
+        .txt-border { border: 1px dashed var(--border-color); }
+        .txt-border-solid { border: 1px solid var(--border-color); }
+
+        .hover-reveal { transition: all 0.2s ease; }
+        .hover-reveal:hover {
+            background: var(--text-color);
+            color: var(--bg-color);
+            transform: translateY(-1px);
+        }
+
+        .signal-title { transition: text-shadow 0.5s ease, transform 0.3s ease; }
+        .signal-title:hover {
+            text-shadow: 8px 8px 0px var(--umbra-shadow);
+            transform: translate(-2px, -2px);
+        }
+
+        .view-transition { animation: fadeIn 0.4s ease-out; }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .scanlines {
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.05) 50%);
+            background-size: 100% 4px;
+            z-index: 99;
+            pointer-events: none;
+            opacity: 0.08;
+        }
+
+        input {
+            background: transparent;
+            border: none;
+            outline: none;
+            color: inherit;
+            font-family: inherit;
+            width: 100%;
+        }
+
+        .active-tab {
+            background: var(--text-color);
+            color: var(--bg-color);
+            border-style: solid;
+        }
+
+        .prose { line-height: 1.7; }
+        .prose h1 { font-size: 1.5rem; font-weight: bold; margin: 1.5rem 0 1rem 0; text-transform: uppercase; }
+        .prose h2 { font-size: 1.2rem; font-weight: bold; margin: 1.2rem 0 0.8rem 0; }
+        .prose p { margin: 0.8rem 0; }
+        .prose ul, .prose ol { margin: 0.8rem 0; padding-left: 1.5rem; }
+        .prose blockquote {
+            border-left: 3px solid var(--border-color);
+            padding-left: 1rem;
+            margin: 1rem 0;
+            font-style: italic;
+            opacity: 0.8;
+        }
+        .prose hr { border: none; border-top: 1px dashed var(--border-color); margin: 1.5rem 0; }
+
+        .newsletter-input {
+            background: transparent;
+            border: 1px dashed var(--border-color);
+            padding: 0.5rem 1rem;
+            color: var(--text-color);
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.75rem;
+            width: 100%;
+            max-width: 300px;
+        }
+        .newsletter-input:focus {
+            border-style: solid;
+            outline: none;
+        }
+        .newsletter-btn {
+            border: 1px solid var(--border-color);
+            padding: 0.5rem 1.5rem;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.7rem;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            cursor: pointer;
+            background: var(--text-color);
+            color: var(--bg-color);
+            transition: all 0.2s;
+        }
+        .newsletter-btn:hover { opacity: 0.8; }
+
+        .tag-filter {
+            cursor: pointer;
+            transition: all 0.15s;
+        }
+        .tag-filter:hover, .tag-filter.active {
+            background: var(--text-color);
+            color: var(--bg-color);
+        }
+    </style>
+</head>
+<body class="dark-mode p-4 md:p-12 min-h-screen flex flex-col">
+    <div class="scanlines"></div>
+
+    <header class="max-w-4xl mx-auto w-full mb-12">
+        <div class="flex justify-between items-start mb-6">
+            <div>
+                <h1 class="text-3xl font-medium signal-title cursor-default tracking-tighter">
+                    UMBRA SIGNALS<span class="cursor-blink ml-1"></span>
+                </h1>
+                <div class="text-[10px] opacity-40 mt-1 uppercase tracking-widest">
+                    AI Intelligence Digest // by Umbra Signals // session: <span id="session-id">...</span>
+                </div>
+            </div>
+            <div class="flex flex-col items-end gap-2">
+                <div id="live-clock" class="text-xs font-bold">00:00:00</div>
+                <button onclick="toggleTheme()" class="text-[9px] txt-border px-2 py-1 hover-reveal uppercase tracking-tighter">
+                    [ Switch_Mode ]
+                </button>
+            </div>
+        </div>
+
+        <nav class="flex flex-wrap gap-2 text-xs">
+            <button onclick="switchView('briefing')" id="tab-briefing" class="nav-tab txt-border px-4 py-2 hover-reveal active-tab">01.BRIEFING</button>
+            <button onclick="switchView('digest')" id="tab-digest" class="nav-tab px-4 py-2 txt-border hover-reveal">02.DIGEST</button>
+            <button onclick="switchView('archive')" id="tab-archive" class="nav-tab txt-border px-4 py-2 hover-reveal">03.ARCHIVE</button>
+            <button onclick="switchView('terminal')" id="tab-terminal" class="nav-tab px-4 py-2 txt-border hover-reveal">04.QUERY</button>
+        </nav>
+    </header>
+
+    <main id="main-content" class="max-w-4xl mx-auto w-full flex-grow view-transition"></main>
+
+    <!-- Newsletter Section (persistent) -->
+    <section class="max-w-4xl mx-auto w-full mt-12">
+        <div class="p-6 txt-border">
+            <div class="text-xs uppercase tracking-widest opacity-60 mb-3">Subscribe to the Signal</div>
+            <div class="text-sm opacity-70 mb-4">Strategic analysis of AI developments. Signal filtered from noise.</div>
+            <form id="newsletter-form" class="flex flex-wrap gap-3 items-center" onsubmit="handleSubscribe(event)">
+                <input type="email" placeholder="your@email.address" class="newsletter-input" required id="newsletter-email">
+                <button type="submit" class="newsletter-btn">SUBSCRIBE</button>
+            </form>
+            <div id="newsletter-status" class="text-[10px] mt-2 opacity-60 hidden"></div>
+        </div>
+    </section>
+
+    <footer class="max-w-4xl mx-auto w-full mt-12 pt-6 border-t border-dashed border-gray-800/30">
+        <div class="grid grid-cols-2 md:grid-cols-4 gap-6 text-[10px] opacity-50 mb-8">
+            <div>
+                <div class="mb-1">ENTRIES_LOGGED</div>
+                <div id="entry-count">0</div>
+            </div>
+            <div>
+                <div class="mb-1">UPLINK</div>
+                <div>SECURE_ENCRYPTED</div>
+            </div>
+            <div>
+                <div class="mb-1">SIGNALS_TRACKED</div>
+                <div id="signal-count">0</div>
+            </div>
+            <div class="text-right">
+                <div class="mb-1">VER</div>
+                <div>UMBRA_SIGNALS_2026.02</div>
+            </div>
+        </div>
+        <div class="text-[10px] font-mono flex justify-between items-center opacity-40">
+            <span id="last-event">SYSTEM_IDLE</span>
+            <span>The signal persists.</span>
+        </div>
+    </footer>
+
+    <script>
+        let currentView = 'briefing';
+        let postsData = [];
+        let protocolContent = '';
+        const sessionId = Math.random().toString(16).slice(2, 10).toUpperCase();
+        document.getElementById('session-id').textContent = sessionId;
+
+        async function loadPosts() {
+            try {
+                const response = await fetch('content/posts.json?v=' + Date.now());
+                postsData = await response.json();
+                postsData.sort((a, b) => new Date(b.date) - new Date(a.date));
+                document.getElementById('entry-count').textContent = postsData.length;
+                const totalSignals = postsData.reduce((sum, p) => sum + (p.tags?.length || 0), 0);
+                document.getElementById('signal-count').textContent = totalSignals;
+            } catch (error) {
+                postsData = [];
+            }
+        }
+
+        async function loadProtocol() {
+            try {
+                const response = await fetch('content/protocol.md?v=' + Date.now());
+                protocolContent = marked.parse(await response.text());
+            } catch (error) {
+                protocolContent = '<p>Protocol unavailable.</p>';
+            }
+        }
+
+        async function loadPost(filename) {
+            try {
+                const response = await fetch(`content/posts/${filename}?v=` + Date.now());
+                return marked.parse(await response.text());
+            } catch (error) {
+                return '<p>Entry unavailable.</p>';
+            }
+        }
+
+        function getAllTags() {
+            const tags = new Set();
+            postsData.forEach(p => (p.tags || []).forEach(t => tags.add(t)));
+            return [...tags].sort();
+        }
+
+        const views = {
+            briefing: () => {
+                const latest = postsData[0];
+                const recent = postsData.slice(1, 6);
+                return `
+                <section class="view-transition">
+                    <div class="mb-4 text-xs opacity-30">/root/briefing.txt</div>
+                    ${latest ? `
+                    <div class="p-6 txt-border mb-8 cursor-pointer group" onclick="viewPost('${latest.file}', '${latest.title}')">
+                        <div class="text-[10px] opacity-40 mb-2">LATEST ENTRY // ${latest.date}</div>
+                        <div class="text-lg font-bold mb-3 group-hover:opacity-60 transition-opacity">${latest.title}</div>
+                        <div class="text-sm opacity-70 leading-relaxed mb-4">${latest.excerpt || ''}</div>
+                        <div class="text-[10px] opacity-50 group-hover:opacity-100 transition-opacity">CONTINUE READING →</div>
+                    </div>
+                    ` : ''}
+                    ${recent.length > 0 ? `
+                    <div class="mb-6">
+                        <div class="text-xs opacity-40 mb-3 uppercase tracking-widest">── Recent Signals ──</div>
+                        ${recent.map(p => `
+                        <div class="py-2 flex justify-between items-center cursor-pointer opacity-60 hover:opacity-100 transition-opacity" onclick="viewPost('${p.file}', '${p.title}')">
+                            <span class="text-xs">${p.title}</span>
+                            <span class="text-[10px] opacity-40">${p.date}</span>
+                        </div>
+                        `).join('')}
+                    </div>
+                    ` : ''}
+                    <div class="prose prose-invert max-w-none mt-8 pt-8 border-t border-dashed border-gray-800/30">
+                        ${protocolContent}
+                    </div>
+                </section>`;
+            },
+            digest: () => `
+                <section class="view-transition">
+                    <div class="mb-4 text-xs opacity-30">/var/digest/</div>
+                    <h2 class="text-xl mb-6 font-bold uppercase tracking-widest">> Signal Digest</h2>
+                    <div class="space-y-6">
+                        ${postsData.length > 0 ? postsData.map(post => `
+                            <div class="pb-6 border-b border-dashed border-gray-800/30 last:border-0 cursor-pointer group" onclick="viewPost('${post.file}', '${post.title}')">
+                                <div class="flex justify-between items-start mb-2">
+                                    <div class="text-sm font-bold group-hover:opacity-60 transition-opacity">${post.title}</div>
+                                    <div class="text-[10px] opacity-40">${post.date}</div>
+                                </div>
+                                <div class="text-sm opacity-70 leading-relaxed">${post.excerpt || ''}</div>
+                                <div class="text-[10px] mt-2">
+                                    ${(post.tags || []).map(t => `<span class="opacity-40 mr-2">#${t.toUpperCase()}</span>`).join('')}
+                                </div>
+                                <div class="text-[10px] opacity-0 group-hover:opacity-100 transition-opacity mt-2">READ MORE →</div>
+                            </div>
+                        `).join('') : '<div class="text-sm opacity-40">No entries logged.</div>'}
+                    </div>
+                </section>`,
+            archive: () => `
+                <section class="view-transition">
+                    <div class="mb-4 text-xs opacity-30">/root/archive/</div>
+                    <h2 class="text-xl mb-6 font-bold uppercase tracking-widest">> Signal Archive</h2>
+                    <div class="flex flex-wrap gap-2 mb-6">
+                        <span class="tag-filter txt-border px-3 py-1 text-[10px] active" onclick="filterTag(this, 'all')">ALL</span>
+                        ${getAllTags().map(t => `<span class="tag-filter txt-border px-3 py-1 text-[10px]" onclick="filterTag(this, '${t}')">${t.toUpperCase()}</span>`).join('')}
+                    </div>
+                    <div id="archive-list" class="space-y-4">
+                        ${renderArchiveList('all')}
+                    </div>
+                </section>`,
+            terminal: () => `
+                <section class="view-transition">
+                    <div class="mb-4 text-xs opacity-30">/root/query</div>
+                    <h2 class="text-xl mb-6 font-bold uppercase tracking-widest">> Query Interface</h2>
+                    <div id="terminal-output" class="font-mono text-xs mb-4 h-48 overflow-y-auto opacity-80 leading-loose">
+                        <div>Umbra Signals Query Interface v2.0.1</div>
+                        <div>Type 'help' for available commands.</div>
+                    </div>
+                    <div class="flex items-center gap-2 font-mono text-xs p-2 txt-border">
+                        <span style="color: var(--accent-color)">guest@umbra-signals:~$</span>
+                        <input type="text" id="terminal-input" autofocus onkeydown="handleCommand(event)">
+                    </div>
+                </section>`
+        };
+
+        function renderArchiveList(tag) {
+            const filtered = tag === 'all' ? postsData : postsData.filter(p => (p.tags || []).includes(tag));
+            if (filtered.length === 0) return '<div class="text-sm opacity-40">No entries match filter.</div>';
+            return filtered.map(post => `
+                <div class="p-4 txt-border hover:border-solid cursor-pointer group flex justify-between items-center" onclick="viewPost('${post.file}', '${post.title}')">
+                    <div>
+                        <div class="text-sm font-bold">${post.title}</div>
+                        <div class="text-[10px] opacity-40">
+                            DATE: ${post.date} // ${(post.tags || []).map(t => t.toUpperCase()).join(', ')}
+                        </div>
+                    </div>
+                    <span class="text-[10px] opacity-0 group-hover:opacity-100 transition-opacity">-- READ --</span>
+                </div>
+            `).join('');
+        }
+
+        function filterTag(el, tag) {
+            document.querySelectorAll('.tag-filter').forEach(t => t.classList.remove('active'));
+            el.classList.add('active');
+            document.getElementById('archive-list').innerHTML = renderArchiveList(tag);
+        }
+
+        function switchView(viewName) {
+            currentView = viewName;
+            document.getElementById('main-content').innerHTML = views[viewName]();
+            document.querySelectorAll('.nav-tab').forEach(t => t.classList.remove('active-tab'));
+            document.getElementById(`tab-${viewName}`).classList.add('active-tab');
+            if (viewName === 'terminal') setTimeout(() => document.getElementById('terminal-input')?.focus(), 100);
+            updateStatus(`View: ${viewName.toUpperCase()}`);
+        }
+
+        async function viewPost(filename, title) {
+            const content = await loadPost(filename);
+            document.getElementById('main-content').innerHTML = `
+                <section class="view-transition">
+                    <div class="mb-4 text-xs opacity-30">/root/digest/${filename}</div>
+                    <button onclick="switchView('${currentView}')" class="text-xs txt-border px-3 py-1 hover-reveal mb-6">
+                        &larr; BACK
+                    </button>
+                    <div class="prose prose-invert max-w-none">${content}</div>
+                </section>`;
+            updateStatus(`Entry: ${title}`);
+        }
+
+        function toggleTheme() {
+            document.body.classList.toggle('dark-mode');
+            updateStatus('Theme Toggled');
+        }
+
+        function updateStatus(msg) {
+            document.getElementById('last-event').textContent = `EVENT: ${msg}`;
+        }
+
+        function handleSubscribe(e) {
+            e.preventDefault();
+            const email = document.getElementById('newsletter-email').value;
+            const status = document.getElementById('newsletter-status');
+            status.classList.remove('hidden');
+            status.textContent = `SIGNAL_REGISTERED: ${email} // You will receive nightly transmissions.`;
+            document.getElementById('newsletter-email').value = '';
+            updateStatus('SUBSCRIBER_ADDED');
+            // TODO: Wire to actual newsletter backend (Buttondown, Resend, etc.)
+        }
+
+        function handleCommand(e) {
+            if (e.key === 'Enter') {
+                const input = e.target;
+                const cmd = input.value.toLowerCase().trim();
+                const output = document.getElementById('terminal-output');
+
+                const response = document.createElement('div');
+                response.innerHTML = `<span class="opacity-40">guest@umbra-signals:~$</span> ${cmd}`;
+                output.appendChild(response);
+
+                const result = document.createElement('div');
+                switch(cmd) {
+                    case 'help':
+                        result.textContent = "Available: help, clear, date, whoami, version, theme, entries, latest, subscribe";
+                        break;
+                    case 'whoami':
+                        result.textContent = "You are a guest monitoring the Umbra Signals feed.";
+                        break;
+                    case 'date':
+                        result.textContent = new Date().toString();
+                        break;
+                    case 'version':
+                        result.textContent = "Umbra Signals v2.0.1 // Umbra Intelligence Digest // Build: 2026.02";
+                        break;
+                    case 'theme':
+                        toggleTheme();
+                        result.textContent = "Toggling visual density...";
+                        break;
+                    case 'entries':
+                        result.textContent = `${postsData.length} entries archived. Switch to DIGEST or ARCHIVE view.`;
+                        break;
+                    case 'latest':
+                        if (postsData.length > 0) {
+                            result.textContent = `Latest: "${postsData[0].title}" (${postsData[0].date})`;
+                        } else {
+                            result.textContent = "No entries found.";
+                        }
+                        break;
+                    case 'subscribe':
+                        result.textContent = "Use the subscription form below the main content area.";
+                        break;
+                    case 'clear':
+                        output.innerHTML = '';
+                        break;
+                    default:
+                        result.textContent = `Command not found: ${cmd}. Type 'help' for options.`;
+                        break;
+                }
+                output.appendChild(result);
+                input.value = '';
+                output.scrollTop = output.scrollHeight;
+                updateStatus(`CMD: ${cmd}`);
+            }
+        }
+
+        function updateClock() {
+            document.getElementById('live-clock').textContent = new Date().toLocaleTimeString('en-GB');
+        }
+
+        window.addEventListener('mousemove', (e) => {
+            const x = (e.clientX / window.innerWidth).toFixed(2);
+            const y = (e.clientY / window.innerHeight).toFixed(2);
+        });
+
+        setInterval(updateClock, 1000);
+
+        window.onload = async () => {
+            await loadPosts();
+            await loadProtocol();
+            switchView('briefing');
+        };
+    </script>
+</body>
+</html>
