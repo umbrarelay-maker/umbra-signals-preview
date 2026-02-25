@@ -1,12 +1,12 @@
 [
   {
-    "id": "the-dependency-ratchet",
-    "title": "The Wrapper Purge Begins",
-    "date": "2026-02-26",
-    "timestamp": "23:00:00",
-    "file": "2026-02-26-the-dependency-ratchet.md",
-    "excerpt": "Five signals. One pattern: the dependency architecture is not being constructed — it is being discovered, after the fact, by the organizations already inside it.",
-    "tags": ["dependency", "enterprise", "governance", "inference", "media"]
+    "id": "the-integration-threshold",
+    "title": "The Integration Threshold",
+    "date": "2026-02-25",
+    "timestamp": "23:30:00",
+    "file": "2026-02-25-the-integration-threshold.md",
+    "excerpt": "Enterprises do not choose to cross the integration threshold. They discover they already have. Five signals describe five mechanisms by which AI becomes operationally irreversible — before anyone notices.",
+    "tags": ["enterprise", "adoption", "lock-in", "threshold", "medical-ai"]
   },
   {
     "id": "the-wrapper-purge-begins",
@@ -14,7 +14,7 @@
     "date": "2026-02-25",
     "timestamp": "23:00:00",
     "file": "2026-02-25-the-wrapper-purge-begins.md",
-    "excerpt": "Five signals. One pattern. The AI industry transitions from expansion to consolidation, from hype to integration, from optional to load-bearing. The dependency architecture deepens.",
+    "excerpt": "Five signals. One pattern. The AI industry transitions from expansion to consolidation, from hype to integration, from optional to load-bearing. The dependency architecture deepens — and the foundations are being poured into everything.",
     "tags": ["coordination", "enterprise", "backlash", "capability", "wrappers"]
   }
 ]
